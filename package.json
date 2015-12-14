@@ -4,6 +4,7 @@
   "description": "A reducer-based HTTP STDAPI.org HATEOAS framework",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "npm-run-all lint:js",
     "lint:js": "eslint source/"
@@ -47,7 +48,6 @@
     "babel-plugin-transform-es2015-for-of": "6.3.13",
     "babel-plugin-transform-es2015-function-name": "6.3.13",
     "babel-plugin-transform-es2015-literals": "6.3.13",
-    "babel-plugin-transform-es2015-modules-commonjs": "6.3.13",
     "babel-plugin-transform-es2015-object-super": "6.3.13",
     "babel-plugin-transform-es2015-parameters": "6.3.13",
     "babel-plugin-transform-es2015-shorthand-properties": "6.3.13",
@@ -81,13 +81,13 @@
     "babel-plugin-transform-simplify-comparison-operators": "6.3.13",
     "babel-plugin-transform-undefined-to-void": "6.3.13",
     "babel-plugin-undeclared-variables-check": "6.3.13",
-    "bunyan": "1.5.1",
     "connect": "3.4.0",
     "eslint": "1.10.3",
     "eslint-plugin-babel": "3.0.0",
     "eslint-plugin-node": "0.2.0",
     "immu": "2.0.0",
     "npm-run-all": "1.4.0",
-    "ramda": "0.18.0"
+    "ramda": "0.18.0",
+    "winston": "2.1.1"
   }
 }

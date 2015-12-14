@@ -1,7 +1,6 @@
 {
   "parser": "babel-eslint",
   "plugins": [
-    "node",
     "babel"
   ],
   "env": {
@@ -14,10 +13,6 @@
     "linebreak-style": [2, "unix"],
     "semi": [2, "never"],
     "comma-dangle": [2, "never"],
-
-    "node/no-missing-import": 2,
-    "node/no-missing-require": 2,
-    "node/shebang": 2,
 
     "babel/generator-star-spacing": 2,
     "babel/new-cap": 2,

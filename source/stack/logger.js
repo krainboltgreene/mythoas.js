@@ -1,19 +1,13 @@
-import {createLogger} from "bunyan"
+import winston from "winston"
 
 export default ({request, response, environment}) => {
 
   return {
-    request: {
-      ...request
-    },
-    response: {
-      ...response
-    },
+    request,
+    response,
     environment: {
       ...environment,
-      logger: createLogger({
-        name: environment.application.name
-      })
+      logger: winston
     }
   }
 }

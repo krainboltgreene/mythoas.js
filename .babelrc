@@ -35,7 +35,6 @@
     "transform-merge-sibling-variables",
     "transform-minify-booleans",
     "transform-property-literals",
-    "transform-remove-console",
     "transform-remove-debugger",
     "transform-simplify-comparison-operators",
     "transform-eval",
