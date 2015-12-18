@@ -1,5 +1,5 @@
-import connect from "connect"
 import http from "http"
+import connect from "connect"
 import server from "./server"
 
 const Application = connect()

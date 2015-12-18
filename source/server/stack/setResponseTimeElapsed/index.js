@@ -1,7 +1,8 @@
 export default ({request, response, environment}) => {
-  let start = environment.timer.start
-  let finish = Date.now()
-  let elapsed = finish - start
+
+  let calculate = (second, nanosecond) => (second * 1e+9 + nanosecond) * 1e-6
+
+  let elapsed = calculate(...process.hrtime(environment.timer.start))
 
   return {
     request,
@@ -9,15 +10,13 @@ export default ({request, response, environment}) => {
       ...response,
       headers: {
         ...response.headers,
-        "Response-Time-Finish": finish,
-        "Response-Time-Elapsed": elapsed
+        "Response-Time-Elapsed": `${elapsed}ms`
       }
     },
     environment: {
       ...environment,
       timer: {
         ...environment.timer,
-        finish,
         elapsed
       }
     }
