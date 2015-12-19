@@ -1,13 +1,13 @@
 export default (state) => {
 
-  let track = state.environment.track || []
+  let states = state.environment.states || []
 
   return {
     ...state,
     environment: {
       ...state.environment,
-      track: [
-        ...track,
+      states: [
+        ...states,
         state
       ]
     }

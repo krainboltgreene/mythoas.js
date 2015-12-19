@@ -26,15 +26,12 @@ let initialState = (request, response) => {
       },
       stack,
       flow,
-      request,
-      response
+      IncomingMessage: request,
+      ServerResponse: response
     }
   }
 }
 
 export default (request, response) => {
-
-  stack.reduce((state, ƒ) => {
-    return pipe(...flow, ƒ)(state)
-  }, initialState(request, response))
+  stack.reduce((state, ƒ) => pipe(...flow, ƒ)(state), initialState(request, response))
 }

@@ -1,4 +1,4 @@
 export default ({request, response, environment}) => {
-  environment.response.writeHead(response.status, response.headers)
-  environment.response.end(response.body)
+  environment.ServerResponse.writeHead(response.status, response.headers)
+  environment.ServerResponse.end(response.body)
 }

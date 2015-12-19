@@ -1,9 +1,13 @@
+import clean from "./clean"
 import immunize from "./immunize"
-import track from "./track"
+import trackState from "./trackState"
+import trackChange from "./trackChange"
 import stopwatch from "./stopwatch"
 
 export default [
+  clean,
   immunize,
-  track,
+  trackState,
+  trackChange,
   stopwatch
 ]
