@@ -1,4 +1,4 @@
-import {pipe} from "ramda"
+import {pipe, reduce} from "ramda"
 import flow from "./flow"
 import stack from "./stack"
 
@@ -33,5 +33,5 @@ let initialState = (request, response) => {
 }
 
 export default (request, response) => {
-  stack.reduce((state, ƒ) => pipe(...flow, ƒ)(state), initialState(request, response))
+  reduce((state, ƒ) => pipe(...stack, ƒ)(state), initialState(request, response), flow)
 }

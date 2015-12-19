@@ -1,15 +1,13 @@
-import setLogger from "./setLogger"
-import logRequest from "./logRequest"
-import closeConnection from "./closeConnection"
-import setResponseTimeStart from "./setResponseTimeStart"
-import setResponseTimeElapsed from "./setResponseTimeElapsed"
-import dispatch from "./dispatch"
+import clean from "./clean"
+import immunize from "./immunize"
+import trackState from "./trackState"
+import trackChange from "./trackChange"
+import stopwatch from "./stopwatch"
 
 export default [
-  setResponseTimeStart,
-  setLogger,
-  dispatch,
-  setResponseTimeElapsed,
-  logRequest,
-  closeConnection
+  clean,
+  immunize,
+  trackState,
+  trackChange,
+  stopwatch
 ]
