@@ -2,14 +2,13 @@ export default ({request, response, environment}) => {
 
   const NANOSECOND = 1e+9
   const MILLISECOND = 1e-6
-
   const calculate = (second, nanosecond) => {
 
     return (second * NANOSECOND + nanosecond) * MILLISECOND
 
   }
-
-  const elapsed = calculate(...process.hrtime(environment.timer.start))
+  const start = environment.flow.responseTimeStart
+  const elapsed = calculate(...process.hrtime(start))
 
   return {
     request,
@@ -22,9 +21,8 @@ export default ({request, response, environment}) => {
     },
     "environment": {
       ...environment,
-      "timer": {
-        ...environment.timer,
-        elapsed
+      "flow": {
+        "responseTimeElapsed": elapsed
       }
     }
   }

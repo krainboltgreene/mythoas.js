@@ -1,6 +1,6 @@
 export default ({request, response, environment}) => {
 
-  const position = environment.track.length
+  const position = environment.stack.history.length
 
   if (!request) {
 

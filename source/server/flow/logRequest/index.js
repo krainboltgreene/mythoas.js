@@ -4,7 +4,7 @@ export default ({request, response, environment}) => {
     "application": environment.application,
     "method": request.method,
     "path": request.url,
-    "elapsed": environment.timer.elapsed
+    "elapsed": environment.flow.responseTimeElapsed.elapsed
   }))
 
   return {

@@ -4,7 +4,7 @@ export default (endpoints, request) => {
 
   const match = (endpoint) => {
 
-    return request.toJSON().match(prop("pattern", endpoint))
+    return JSON.stringify(request).match(prop("pattern", endpoint))
 
   }
 

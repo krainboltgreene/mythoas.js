@@ -1,13 +1,44 @@
-import clean from "./clean"
+import {pipe, map, wrap} from "ramda"
+import check from "./check"
 import immunize from "./immunize"
-import trackState from "./trackState"
-import trackChange from "./trackChange"
-import stopwatch from "./stopwatch"
+import scrub from "./scrub"
+import startTimer from "./startTimer"
+import stopTimer from "./stopTimer"
+import track from "./track"
 
-export default [
-  clean,
-  immunize,
-  trackState,
-  trackChange,
-  stopwatch
-]
+const safely = (ƒunction, state) => {
+
+  try {
+
+    return ƒunction(state)
+
+  } catch (error) {
+
+    throw new Error(`${error}\nFunction: ${ƒunction}\nState: ${state}`)
+
+  }
+
+}
+
+const protect = (ƒunction) => {
+
+  return wrap(ƒunction, safely)
+
+}
+
+export default (ƒunction) => {
+
+  return pipe(...map(
+    protect,
+    [
+      scrub,
+      immunize,
+      startTimer,
+      ƒunction,
+      stopTimer,
+      check,
+      track
+    ]
+  ))
+
+}

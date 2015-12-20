@@ -7,9 +7,9 @@ export default ({request, response, environment}) => {
     response,
     "environment": {
       ...environment,
-      "timer": {
-        ...environment.timer,
-        start
+      "flow": {
+        ...environment.flow,
+        "responseTimeStart": start
       }
     }
   }
