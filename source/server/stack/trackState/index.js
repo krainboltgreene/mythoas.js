@@ -1,15 +1,16 @@
 export default (state) => {
 
-  let states = state.environment.states || []
+  const states = state.environment.states || []
 
   return {
     ...state,
-    environment: {
+    "environment": {
       ...state.environment,
-      states: [
+      "states": [
         ...states,
         state
       ]
     }
   }
+
 }

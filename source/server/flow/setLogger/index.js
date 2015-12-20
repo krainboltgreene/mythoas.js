@@ -5,9 +5,10 @@ export default ({request, response, environment}) => {
   return {
     request,
     response,
-    environment: {
+    "environment": {
       ...environment,
-      logger: winston
+      "logger": winston
     }
   }
+
 }

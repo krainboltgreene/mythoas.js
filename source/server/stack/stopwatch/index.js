@@ -1,18 +1,17 @@
-import {last} from "ramda"
-
 export default (state) => {
 
-  let timeline = state.environment.stopwatch || []
-  let checkin = Date.now()
+  const timeline = state.environment.stopwatch || []
+  const checkin = Date.now()
 
   return {
     ...state,
-    environment: {
+    "environment": {
       ...state.environment,
-      stopwatch: [
+      "stopwatch": [
         ...timeline,
         checkin
       ]
     }
   }
+
 }

@@ -3,19 +3,20 @@ import {last} from "ramda"
 
 export default (state) => {
 
-  let {request, response} = state
-  let states = state.environment.states
-  let changes = state.environment.changes || []
-  let change = diff(last(states) || {}, {request, response})
+  const {request, response} = state
+  const states = state.environment.states
+  const changes = state.environment.changes || []
+  const change = diff(last(states) || {}, {request, response})
 
   return {
     ...state,
-    environment: {
+    "environment": {
       ...state.environment,
-      changes: [
+      "changes": [
         ...changes,
         change
       ]
     }
   }
+
 }

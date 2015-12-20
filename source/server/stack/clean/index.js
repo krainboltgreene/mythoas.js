@@ -1,20 +1,23 @@
-import {last} from "ramda"
-
 export default ({request, response, environment}) => {
+
+  const position = environment.track.length
 
   if (!request) {
 
-    throw `Request is missing after stack ${environment.track.length}`
+    throw new Error(`Request is missing after stack ${position}`)
+
   }
 
   if (!response) {
 
-    throw `Response is missing after stack ${environment.track.length}`
+    throw new Error(`Response is missing after stack ${position}`)
+
   }
 
   if (!environment) {
 
-    throw `Environment is missing after stack ${environment.track.length}`
+    throw new Error(`Environment is missing after stack ${position}`)
+
   }
 
   return {
@@ -22,4 +25,5 @@ export default ({request, response, environment}) => {
     response,
     environment
   }
+
 }

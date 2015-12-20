@@ -1,15 +1,17 @@
 export default ({request, response, environment}) => {
-  let start = process.hrtime()
+
+  const start = process.hrtime()
 
   return {
     request,
     response,
-    environment: {
+    "environment": {
       ...environment,
-      timer: {
+      "timer": {
         ...environment.timer,
         start
       }
     }
   }
+
 }

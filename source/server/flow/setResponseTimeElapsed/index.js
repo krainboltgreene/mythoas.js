@@ -1,24 +1,32 @@
 export default ({request, response, environment}) => {
 
-  let calculate = (second, nanosecond) => (second * 1e+9 + nanosecond) * 1e-6
+  const NANOSECOND = 1e+9
+  const MILLISECOND = 1e-6
 
-  let elapsed = calculate(...process.hrtime(environment.timer.start))
+  const calculate = (second, nanosecond) => {
+
+    return (second * NANOSECOND + nanosecond) * MILLISECOND
+
+  }
+
+  const elapsed = calculate(...process.hrtime(environment.timer.start))
 
   return {
     request,
-    response: {
+    "response": {
       ...response,
-      headers: {
+      "headers": {
         ...response.headers,
         "Response-Time-Elapsed": `${elapsed}ms`
       }
     },
-    environment: {
+    "environment": {
       ...environment,
-      timer: {
+      "timer": {
         ...environment.timer,
         elapsed
       }
     }
   }
+
 }

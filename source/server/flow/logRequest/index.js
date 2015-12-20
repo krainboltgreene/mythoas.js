@@ -1,12 +1,10 @@
-import {reduce} from "ramda"
-
 export default ({request, response, environment}) => {
 
   environment.logger.info(JSON.stringify({
-    application: environment.application,
-    method: request.method,
-    path: request.url,
-    elapsed: environment.timer.elapsed
+    "application": environment.application,
+    "method": request.method,
+    "path": request.url,
+    "elapsed": environment.timer.elapsed
   }))
 
   return {
@@ -14,4 +12,5 @@ export default ({request, response, environment}) => {
     response,
     environment
   }
+
 }
