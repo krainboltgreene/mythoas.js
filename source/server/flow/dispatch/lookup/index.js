@@ -1,13 +1,31 @@
-import {find, prop} from "ramda"
+import {find, prop, pipe, defaultTo} from "ramda"
 
 export default (endpoints, request) => {
 
-  const match = (endpoint) => {
+  const notFound = {
+    "computation": (response, environment) => {
+
+      return {
+        request,
+        "response": {
+          ...response,
+          "status": 404
+        },
+        "environment": {
+          ...environment,
+          "continue": false
+        }
+      }
+
+    }
+  }
+
+  function match (endpoint) {
 
     return JSON.stringify(request).match(prop("pattern", endpoint))
 
   }
 
-  return find(match)(endpoints)
+  return pipe(find(match), defaultTo(notFound))(endpoints)
 
 }

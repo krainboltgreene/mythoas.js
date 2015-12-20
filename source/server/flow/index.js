@@ -1,4 +1,3 @@
-import closeConnection from "./closeConnection"
 import dispatch from "./dispatch"
 import logRequest from "./logRequest"
 import setResponseTimeElapsed from "./setResponseTimeElapsed"
@@ -8,6 +7,5 @@ export default [
   setResponseTimeStart,
   dispatch,
   setResponseTimeElapsed,
-  logRequest,
-  closeConnection
+  logRequest
 ]

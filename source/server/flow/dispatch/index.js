@@ -1,8 +1,12 @@
+import {pipe, prop} from "ramda"
+import protect from "../../decorators/protect"
 import lookup from "./lookup"
 import endpoints from "./endpoints"
 
-export default ({request, response, environment}) => {
+function dispatch (state) {
 
-  return lookup(endpoints, request)(response, environment)
+  return prop("computation", lookup(endpoints, state.request))(state)
 
 }
+
+export default pipe(protect)(dispatch)

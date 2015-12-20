@@ -4,19 +4,19 @@ export default ({request, response, environment}) => {
 
   if (!request) {
 
-    throw new Error(`Request is missing after stack ${position}`)
+    throw new Error(`Request is missing after flow ${position}`)
 
   }
 
   if (!response) {
 
-    throw new Error(`Response is missing after stack ${position}`)
+    throw new Error(`Response is missing after flow ${position}`)
 
   }
 
   if (!environment) {
 
-    throw new Error(`Environment is missing after stack ${position}`)
+    throw new Error(`Environment is missing after flow ${position}`)
 
   }
 

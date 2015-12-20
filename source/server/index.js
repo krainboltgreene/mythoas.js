@@ -5,6 +5,10 @@ import initialState from "./initialState"
 
 export default (request, response) => {
 
-  reduce((state, ƒn) => stack(ƒn)(state), initialState(request, response), flow)
+  return reduce((state, ƒn) => {
+
+    return stack(ƒn)(state)
+
+  }, initialState(request, response), flow)
 
 }

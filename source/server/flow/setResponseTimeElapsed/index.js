@@ -2,7 +2,8 @@ export default ({request, response, environment}) => {
 
   const NANOSECOND = 1e+9
   const MILLISECOND = 1e-6
-  const calculate = (second, nanosecond) => {
+
+  function calculate (second, nanosecond) {
 
     return (second * NANOSECOND + nanosecond) * MILLISECOND
 

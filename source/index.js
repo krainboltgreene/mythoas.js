@@ -5,6 +5,16 @@ import server from "./server"
 const Application = connect()
 const PORT = 3000
 
-Application.use((request, response) => server(request, response))
+function close ({response, environment}) {
+
+  const {ServerResponse} = environment
+  const {status, headers, body} = response
+
+  ServerResponse.writeHead(status, headers)
+  ServerResponse.end(body)
+
+}
+
+Application.use((request, response) => close(server(request, response)))
 
 http.createServer(Application).listen(PORT)
