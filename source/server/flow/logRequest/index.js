@@ -4,7 +4,7 @@ import protect from "../../protect"
 function logRequest ({request, response, environment}) {
 
   environment.logger.info(JSON.stringify({
-    "application": environment.application,
+    "name": environment.metadata.name,
     "method": request.method,
     "path": request.url,
     "status": response.status,

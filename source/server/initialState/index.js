@@ -25,8 +25,9 @@ export default (request, response) => {
       "body": null
     },
     "environment": {
-      "application": {
-        "name": "Mythoas"
+      "metadata": {
+        "name": "Mythoas",
+        "acceptType": "application/mythoas.api+json; version=1"
       },
       dispatch,
       "logger": winston,
