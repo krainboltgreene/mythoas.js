@@ -7,6 +7,7 @@ function logRequest ({request, response, environment}) {
     "application": environment.application,
     "method": request.method,
     "path": request.url,
+    "status": response.status,
     "elapsed": environment.flow.responseTimeElapsed
   }))
 

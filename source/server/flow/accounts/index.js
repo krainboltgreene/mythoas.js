@@ -1,29 +1,30 @@
 import {pipe} from "ramda"
 import protect from "../../protect"
 
-function users ({request, response, environment}) {
+function accounts ({request, response, environment}) {
 
-  const pattern = new RegExp(`"url":"/users/?"`)
+  const pattern = new RegExp(`"url":"/accounts/?"`)
 
-  if (environment.dispatch(request, pattern)) {
+  if (environment.dispatch({request, pattern})) {
 
     const status = 200
     const body = {
       "data": [
         {
-          "type": "users",
+          "type": "accounts",
           "id": "1",
           "attributes": {
+            "username": "krainboltgreene",
             "name": "Kurtis Rainbolt-Greene"
           },
           "links": {
-            "self": "http://example.com/users/1"
+            "self": "http://example.com/accounts/1"
           }
         }
       ],
       "links": {
-        "self": "http://example.com/users",
-        "next": "http://example.com/users?page[offset]=1"
+        "self": "http://example.com/accounts",
+        "next": "http://example.com/accounts?page[offset]=1"
       }
     }
 
@@ -47,4 +48,4 @@ function users ({request, response, environment}) {
 
 }
 
-export default pipe(protect)(users)
+export default pipe(protect)(accounts)

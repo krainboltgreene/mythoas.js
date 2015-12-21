@@ -147,7 +147,7 @@
     "guard-for-in": 2,
     "handle-callback-err": 2,
     "id-length": 2,
-    "indent": [2, 2],
+    "indent": [2, 2, {"SwitchCase": 1}],
     "init-declarations": 2,
     "jsx-quotes": 2,
     "key-spacing": 2,

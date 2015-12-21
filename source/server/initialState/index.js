@@ -20,9 +20,9 @@ export default (request, response) => {
       "body": request.body || ""
     },
     "response": {
-      "status": response.statusCode,
-      "headers": response.headers,
-      "body": response.body || ""
+      "status": null,
+      "headers": {},
+      "body": null
     },
     "environment": {
       "application": {
