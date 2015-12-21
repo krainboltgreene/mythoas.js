@@ -9,7 +9,7 @@
     "lint": "npm-run-all lint:js",
     "lint:js": "eslint ./source/",
     "serve": "node ./tmp/index.js",
-    "build": "babel ./source/ -d ./tmp/"
+    "postinstall": "babel ./source/ -d ./tmp/"
   },
   "repository": {
     "type": "git",
