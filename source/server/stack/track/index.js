@@ -1,5 +1,5 @@
 import {pipe} from "ramda"
-import protect from "../../decorators/protect"
+import protect from "../../protect"
 
 function track (state) {
 

@@ -1,5 +1,11 @@
 import winston from "winston"
 
+function dispatch ({request, pattern}) {
+
+  return JSON.stringify(request).match(pattern)
+
+}
+
 export default (request, response) => {
 
   return {
@@ -22,6 +28,7 @@ export default (request, response) => {
       "application": {
         "name": "Mythoas"
       },
+      dispatch,
       "logger": winston,
       "IncomingMessage": request,
       "ServerResponse": response,

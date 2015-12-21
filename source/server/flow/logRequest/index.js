@@ -1,4 +1,7 @@
-export default ({request, response, environment}) => {
+import {pipe} from "ramda"
+import protect from "../../protect"
+
+function logRequest ({request, response, environment}) {
 
   environment.logger.info(JSON.stringify({
     "application": environment.application,
@@ -14,3 +17,5 @@ export default ({request, response, environment}) => {
   }
 
 }
+
+export default pipe(protect)(logRequest)

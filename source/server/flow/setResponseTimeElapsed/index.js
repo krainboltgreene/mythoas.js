@@ -1,4 +1,7 @@
-export default ({request, response, environment}) => {
+import {pipe} from "ramda"
+import protect from "../../protect"
+
+function setResponseTimeElapsed ({request, response, environment}) {
 
   const NANOSECOND = 1e+9
   const MILLISECOND = 1e-6
@@ -29,3 +32,5 @@ export default ({request, response, environment}) => {
   }
 
 }
+
+export default pipe(protect)(setResponseTimeElapsed)
