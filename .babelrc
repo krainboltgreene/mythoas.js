@@ -30,7 +30,6 @@
     "transform-eval",
     "transform-exponentiation-operator",
     "transform-export-extensions",
-    "transform-flow-strip-types",
     "transform-function-bind",
     "transform-inline-environment-variables",
     "transform-jscript",
