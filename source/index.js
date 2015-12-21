@@ -17,4 +17,4 @@ function close ({response, environment}) {
 
 Application.use((request, response) => close(server(request, response)))
 
-http.createServer(Application).listen(PORT)
+http.createServer(Application).listen(process.env.PORT || PORT)
