@@ -36,7 +36,6 @@
     "transform-member-expression-literals",
     "transform-merge-sibling-variables",
     "transform-minify-booleans",
-    "transform-node-env-inline",
     "transform-object-assign",
     "transform-object-rest-spread",
     "transform-object-set-prototype-of-to-assign",
