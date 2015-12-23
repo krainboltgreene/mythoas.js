@@ -1,16 +1,30 @@
-export default (state) => {
+import {pipe} from "ramda"
+import protect from "../../protect"
 
-  const NANOSECOND = 1e+9
-  const MILLISECOND = 1e-6
+function stopTimer (state) {
 
-  const calculate = (second, nanosecond) => {
+  function calculate (second, nanosecond) {
+
+    const NANOSECOND = 1e+9
+    const MILLISECOND = 1e-6
 
     return (second * NANOSECOND + nanosecond) * MILLISECOND
 
   }
 
+  const mapping = [
+    "setResponseTimeStart",
+    "accounts",
+    "naturalize",
+    "notFound",
+    "serialize",
+    "setContentLength",
+    "setAcceptType",
+    "setResponseTimeElapsed",
+    "logRequest"
+  ]
+  const position = state.environment.stack.history.length
   const start = state.environment.stack.startTime
-
   const elapsed = calculate(...process.hrtime(start))
 
   return {
@@ -20,12 +34,14 @@ export default (state) => {
       ...state.environment,
       "stack": {
         ...state.environment.stack,
-        "timeseries": [
-          ...state.environment.stack.timeseries,
-          elapsed
+        "timespans": [
+          ...state.environment.stack.timespans,
+          [mapping[position], elapsed]
         ]
       }
     }
   }
 
 }
+
+export default pipe(protect)(stopTimer)

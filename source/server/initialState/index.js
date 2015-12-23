@@ -29,13 +29,14 @@ export default (request, response) => {
         "name": "Mythoas",
         "acceptType": "application/mythoas.api+json; version=1"
       },
+      keen,
+      pusher,
       dispatch,
-      "logger": winston,
       "IncomingMessage": request,
       "ServerResponse": response,
       "stack": {
         "history": [],
-        "timeseries": []
+        "timespans": []
       }
     }
   }
