@@ -1,4 +1,7 @@
-export default (state) => {
+import {pipe} from "ramda"
+import protect from "../../protect"
+
+function startTimer (state) {
 
   return {
     "request": state.request,
@@ -13,3 +16,5 @@ export default (state) => {
   }
 
 }
+
+export default pipe(protect)(startTimer)

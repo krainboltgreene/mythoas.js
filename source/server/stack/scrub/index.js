@@ -1,4 +1,7 @@
-export default ({request, response, environment}) => {
+import {pipe} from "ramda"
+import protect from "../../protect"
+
+function scrub ({request, response, environment}) {
 
   return {
     request,
@@ -7,3 +10,5 @@ export default ({request, response, environment}) => {
   }
 
 }
+
+export default pipe(protect)(scrub)

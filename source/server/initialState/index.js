@@ -23,18 +23,18 @@ function dispatch ({request, pattern}) {
 
 }
 
-export default (request, response) => {
+export default (IncomingMessage, ServerResponse) => {
 
   return {
     "request": {
-      "method": request.method,
+      "method": IncomingMessage.method,
       "version": {
-        "major": request.httpVersionMajor,
-        "minor": request.httpVersionMinor
+        "major": IncomingMessage.httpVersionMajor,
+        "minor": IncomingMessage.httpVersionMinor
       },
-      "url": request.url,
-      "headers": request.headers,
-      "body": request.body || ""
+      "url": IncomingMessage.url,
+      "headers": IncomingMessage.headers,
+      "body": IncomingMessage.body || ""
     },
     "response": {
       "status": null,
@@ -49,8 +49,9 @@ export default (request, response) => {
       keen,
       pusher,
       dispatch,
-      "IncomingMessage": request,
-      "ServerResponse": response,
+      IncomingMessage,
+      ServerResponse,
+      "flow": {},
       "stack": {
         "history": [],
         "timespans": []
