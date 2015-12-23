@@ -15,7 +15,11 @@ const pusher = new Pusher({
 
 function dispatch ({request, pattern}) {
 
-  return JSON.stringify(request).match(pattern)
+  return all(([key, value]) => {
+
+    return request[key].match(value)
+
+  })(toPairs(pattern))
 
 }
 

@@ -3,7 +3,9 @@ import protect from "../../protect"
 
 function accounts ({request, response, environment}) {
 
-  const pattern = new RegExp(`"url":"/accounts/?"`)
+  const pattern = {
+    "url": new RegExp(`/accounts/?`)
+  }
 
   if (environment.dispatch({request, pattern})) {
 
