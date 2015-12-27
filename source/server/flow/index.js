@@ -10,8 +10,8 @@ import setAcceptType from "./setAcceptType"
 
 export default [
   setResponseTimeStart,
-  accounts,
   naturalize,
+  accounts,
   notFound,
   serialize,
   setContentLength,
