@@ -1,7 +1,4 @@
-import {pipe} from "ramda"
-import protect from "../../protect"
-
-function accounts ({request, response, environment}) {
+export default ({request, response, environment}) => {
 
   const pattern = {
     "url": new RegExp(`/accounts/?`)
@@ -49,5 +46,3 @@ function accounts ({request, response, environment}) {
   }
 
 }
-
-export default pipe(protect)(accounts)

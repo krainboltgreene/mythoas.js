@@ -1,9 +1,6 @@
-import {pipe} from "ramda"
-import protect from "../../protect"
+export default ({request, response, environment}) => {
 
-function setResponseTimeStart ({request, response, environment}) {
-
-  const start = process.hrtime()
+  const responseTimeStart = process.hrtime()
 
   return {
     request,
@@ -12,11 +9,9 @@ function setResponseTimeStart ({request, response, environment}) {
       ...environment,
       "flow": {
         ...environment.flow,
-        "responseTimeStart": start
+        responseTimeStart
       }
     }
   }
 
 }
-
-export default pipe(protect)(setResponseTimeStart)

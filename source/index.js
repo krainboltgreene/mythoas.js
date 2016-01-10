@@ -1,6 +1,5 @@
 import http from "http"
 import connect from "connect"
-import {prop} from "ramda"
 import requireEnvironmentVariables from "require-environment-variables"
 import server from "./server"
 
@@ -10,21 +9,20 @@ requireEnvironmentVariables([
   "PUSHER_API_ID",
   "PUSHER_API_PUBLIC",
   "PUSHER_API_PRIVATE",
+  "SEQUALIZE_DATABASE_URI",
+  "SEQUALIZE_POOL_MAX",
+  "SEQUALIZE_POOL_MIN",
+  "SEQUALIZE_POOL_IDLE",
   "PORT"
 ])
 
+const {
+  "env": {
+    PORT
+  }
+} = process
 const Application = connect()
 
-function close ({response, environment}) {
+Application.use((request, response) => server(request, response))
 
-  const {ServerResponse} = environment
-  const {status, headers, body} = response
-
-  ServerResponse.writeHead(status, headers)
-  ServerResponse.end(body)
-
-}
-
-Application.use((request, response) => close(server(request, response)))
-
-http.createServer(Application).listen(prop("PORT", process.env))
+http.createServer(Application).listen(PORT)

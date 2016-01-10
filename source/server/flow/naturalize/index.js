@@ -1,11 +1,11 @@
-import {pipe} from "ramda"
-import protect from "../../protect"
+export default ({request, response, environment}) => {
 
-function naturalize ({request, response, environment}) {
+  const contentType = request.headers["Content-Type"]
+  const defaultAcceptType = environment.metadata.acceptType
 
-  switch (request.headers["Content-Type"]) {
+  switch (contentType) {
 
-    case environment.metadata.acceptType: {
+    case defaultAcceptType: {
 
       return {
         "request": {
@@ -30,7 +30,6 @@ function naturalize ({request, response, environment}) {
 
   }
 
-
   return {
     request,
     response,
@@ -38,5 +37,3 @@ function naturalize ({request, response, environment}) {
   }
 
 }
-
-export default pipe(protect)(naturalize)

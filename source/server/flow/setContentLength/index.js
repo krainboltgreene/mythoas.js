@@ -1,7 +1,6 @@
-import {pipe} from "ramda"
-import protect from "../../protect"
+export default ({request, response, environment}) => {
 
-function setContentLength ({request, response, environment}) {
+  const contentLength = response.body.length
 
   return {
     request,
@@ -9,12 +8,10 @@ function setContentLength ({request, response, environment}) {
       ...response,
       "headers": {
         ...response.headers,
-        "Content-Length": response.body.length
+        "Content-Length": contentLength
       }
     },
     environment
   }
 
 }
-
-export default pipe(protect)(setContentLength)

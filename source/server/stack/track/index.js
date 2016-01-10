@@ -1,7 +1,4 @@
-import {pipe} from "ramda"
-import protect from "../../protect"
-
-function track (state) {
+export default (state) => {
 
   const history = state.environment.stack.history
 
@@ -20,5 +17,3 @@ function track (state) {
   }
 
 }
-
-export default pipe(protect)(track)

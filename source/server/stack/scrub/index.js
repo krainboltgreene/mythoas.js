@@ -1,7 +1,10 @@
-import {pipe} from "ramda"
-import protect from "../../protect"
+export default (state) => {
 
-function scrub ({request, response, environment}) {
+  const {
+    request,
+    response,
+    environment
+  } = state
 
   return {
     request,
@@ -10,5 +13,3 @@ function scrub ({request, response, environment}) {
   }
 
 }
-
-export default pipe(protect)(scrub)

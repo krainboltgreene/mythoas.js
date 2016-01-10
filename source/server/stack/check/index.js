@@ -1,7 +1,4 @@
-import {pipe} from "ramda"
-import protect from "../../protect"
-
-function check ({request, response, environment}) {
+export default ({request, response, environment}) => {
 
   const position = environment.stack.history.length
 
@@ -30,5 +27,3 @@ function check ({request, response, environment}) {
   }
 
 }
-
-export default pipe(protect)(check)

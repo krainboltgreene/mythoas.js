@@ -1,7 +1,4 @@
-import {pipe} from "ramda"
-import protect from "../../protect"
-
-function logRequest ({request, response, environment}) {
+export default ({request, response, environment}) => {
 
   const name = environment.metadata.name
   const method = request.method
@@ -9,7 +6,7 @@ function logRequest ({request, response, environment}) {
   const elapsed = environment.flow.responseTimeElapsed
   const timespans = environment.stack.timespans
 
-  environment.keen.addEvent("requests", {
+  environment.remote.keen.addEvent("requests", {
     "payload": {
       name,
       method,
@@ -18,10 +15,10 @@ function logRequest ({request, response, environment}) {
       timespans
     }
   })
-  environment.keen.addEvent("timespans", {
+  environment.remote.keen.addEvent("timespans", {
     "payload": timespans
   })
-  environment.pusher.trigger("timespans", "new", {
+  environment.remote.pusher.trigger("timespans", "new", {
     "payload": timespans
   })
 
@@ -32,5 +29,3 @@ function logRequest ({request, response, environment}) {
   }
 
 }
-
-export default pipe(protect)(logRequest)

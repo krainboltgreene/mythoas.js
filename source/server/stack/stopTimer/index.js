@@ -1,17 +1,12 @@
-import {pipe} from "ramda"
-import protect from "../../protect"
+export default (state) => {
 
-function stopTimer (state) {
-
-  function calculate (second, nanosecond) {
-
-    const NANOSECOND = 1e+9
-    const MILLISECOND = 1e-6
+  const NANOSECOND = 1e+9
+  const MILLISECOND = 1e-6
+  const calculate = (second, nanosecond) => {
 
     return (second * NANOSECOND + nanosecond) * MILLISECOND
 
   }
-
   const mapping = [
     "setResponseTimeStart",
     "accounts",
@@ -43,5 +38,3 @@ function stopTimer (state) {
   }
 
 }
-
-export default pipe(protect)(stopTimer)

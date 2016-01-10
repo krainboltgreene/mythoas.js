@@ -1,11 +1,11 @@
-import {pipe} from "ramda"
-import protect from "../../protect"
+export default ({request, response, environment}) => {
 
-function serialize ({request, response, environment}) {
+  const acceptType = request.headers["Accept-Type"]
+  const defaultAcceptType = defaultAcceptType
 
-  switch (request.headers["Accept-Type"]) {
+  switch (acceptType) {
 
-    case environment.metadata.acceptType: {
+    case defaultAcceptType: {
 
       return {
         request,
@@ -13,7 +13,7 @@ function serialize ({request, response, environment}) {
           ...response,
           "headers": {
             ...response.headers,
-            "Content-Type": environment.metadata.acceptType
+            "Content-Type": defaultAcceptType
           },
           "body": JSON.stringify(response.body)
         },
@@ -30,7 +30,7 @@ function serialize ({request, response, environment}) {
           ...response,
           "headers": {
             ...response.headers,
-            "Content-Type": environment.metadata.acceptType
+            "Content-Type": defaultAcceptType
           },
           "body": JSON.stringify(response.body)
         },
@@ -49,5 +49,3 @@ function serialize ({request, response, environment}) {
   }
 
 }
-
-export default pipe(protect)(serialize)

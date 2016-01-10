@@ -1,7 +1,6 @@
-import {pipe} from "ramda"
-import protect from "../../protect"
+export default ({request, response, environment}) => {
 
-function setAcceptType ({request, response, environment}) {
+  const acceptType = environment.metadata.acceptType
 
   return {
     request,
@@ -9,12 +8,10 @@ function setAcceptType ({request, response, environment}) {
       ...response,
       "headers": {
         ...response.headers,
-        "Accept-Type": environment.metadata.acceptType
+        "Accept-Type": acceptType
       }
     },
     environment
   }
 
 }
-
-export default pipe(protect)(setAcceptType)

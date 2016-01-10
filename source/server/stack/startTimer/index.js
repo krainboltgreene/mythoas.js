@@ -1,7 +1,6 @@
-import {pipe} from "ramda"
-import protect from "../../protect"
+export default (state) => {
 
-function startTimer (state) {
+  const startTime = process.hrtime()
 
   return {
     "request": state.request,
@@ -10,11 +9,9 @@ function startTimer (state) {
       ...state.environment,
       "stack": {
         ...state.environment.stack,
-        "startTime": process.hrtime()
+        startTime
       }
     }
   }
 
 }
-
-export default pipe(protect)(startTimer)

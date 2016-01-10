@@ -1,7 +1,4 @@
-import {pipe} from "ramda"
-import protect from "../../protect"
-
-function notFound ({request, response, environment}) {
+export default ({request, response, environment}) => {
 
   if (!response.status) {
 
@@ -25,5 +22,3 @@ function notFound ({request, response, environment}) {
   }
 
 }
-
-export default pipe(protect)(notFound)

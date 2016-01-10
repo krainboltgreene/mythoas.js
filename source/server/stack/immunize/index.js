@@ -1,8 +1,6 @@
 import immu from "immu"
-import {pipe} from "ramda"
-import protect from "../../protect"
 
-function immunize (state) {
+export default (state) => {
 
   return {
     "request": immu(state.request),
@@ -11,5 +9,3 @@ function immunize (state) {
   }
 
 }
-
-export default pipe(protect)(immunize)
