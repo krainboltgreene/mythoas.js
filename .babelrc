@@ -1,5 +1,6 @@
 {
   "plugins": [
+    "syntax-flow",
     "transform-async-to-generator",
     "transform-async-to-module-method",
     "transform-class-constructor-call",
@@ -44,6 +45,8 @@
     "transform-regenerator",
     "transform-runtime",
     "transform-simplify-comparison-operators",
-    "transform-undefined-to-void"
+    "transform-undefined-to-void",
+    "transform-flow-strip-types",
+    "typecheck"
   ]
 }
