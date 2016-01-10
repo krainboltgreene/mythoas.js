@@ -4,9 +4,9 @@ export default ({request, response, environment}) => {
 
   return {
     request,
-    "response": {
+    response: {
       ...response,
-      "headers": {
+      headers: {
         ...response.headers,
         "Content-Length": contentLength
       }

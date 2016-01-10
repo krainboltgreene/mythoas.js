@@ -6,7 +6,7 @@ export default ({request, response, environment}) => {
 
     return {
       request,
-      "response": {
+      response: {
         ...response,
         status
       },

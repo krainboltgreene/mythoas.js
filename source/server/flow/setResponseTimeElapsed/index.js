@@ -12,16 +12,16 @@ export default ({request, response, environment}) => {
 
   return {
     request,
-    "response": {
+    response: {
       ...response,
-      "headers": {
+      headers: {
         ...response.headers,
         "Response-Time-Elapsed": `${elapsed}ms`
       }
     },
-    "environment": {
+    environment: {
       ...environment,
-      "flow": {
+      flow: {
         "responseTimeElapsed": elapsed
       }
     }

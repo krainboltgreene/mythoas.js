@@ -5,9 +5,9 @@ export default ({request, response, environment}) => {
   return {
     request,
     response,
-    "environment": {
+    environment: {
       ...environment,
-      "flow": {
+      flow: {
         ...environment.flow,
         responseTimeStart
       }

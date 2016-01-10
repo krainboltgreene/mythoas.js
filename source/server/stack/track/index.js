@@ -4,11 +4,11 @@ export default (state) => {
 
   return {
     ...state,
-    "environment": {
+    environment: {
       ...state.environment,
-      "stack": {
+      stack: {
         ...state.environment.stack,
-        "history": [
+        history: [
           ...history,
           state
         ]

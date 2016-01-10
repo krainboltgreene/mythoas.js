@@ -7,15 +7,17 @@ export default ({request, response, environment}) => {
 
     case defaultAcceptType: {
 
+      const body = JSON.stringify(response.body)
+
       return {
         request,
-        "response": {
+        response: {
           ...response,
-          "headers": {
+          headers: {
             ...response.headers,
             "Content-Type": defaultAcceptType
           },
-          "body": JSON.stringify(response.body)
+          body
         },
         environment
       }
@@ -24,15 +26,17 @@ export default ({request, response, environment}) => {
 
     default: {
 
+      const body = JSON.stringify(response.body)
+
       return {
         request,
-        "response": {
+        response: {
           ...response,
-          "headers": {
+          headers: {
             ...response.headers,
             "Content-Type": defaultAcceptType
           },
-          "body": JSON.stringify(response.body)
+          body
         },
         environment
       }

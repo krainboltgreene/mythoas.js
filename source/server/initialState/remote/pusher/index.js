@@ -1,7 +1,7 @@
 import Pusher from "pusher"
 
 const {
-  "env": {
+  env: {
     PUSHER_API_ID,
     PUSHER_API_PUBLIC,
     PUSHER_API_PRIVATE
@@ -9,8 +9,8 @@ const {
 } = process
 
 export default new Pusher({
-  "appId": PUSHER_API_ID,
-  "key": PUSHER_API_PUBLIC,
-  "secret": PUSHER_API_PRIVATE,
-  "encrypted": true
+  appId: PUSHER_API_ID,
+  key: PUSHER_API_PUBLIC,
+  secret: PUSHER_API_PRIVATE,
+  encrypted: true
 })

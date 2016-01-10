@@ -23,13 +23,13 @@ export default (state) => {
   const elapsed = calculate(...process.hrtime(start))
 
   return {
-    "request": state.request,
-    "response": state.response,
-    "environment": {
+    request: state.request,
+    response: state.response,
+    environment: {
       ...state.environment,
-      "stack": {
+      stack: {
         ...state.environment.stack,
-        "timespans": [
+        timespans: [
           ...state.environment.stack.timespans,
           [mapping[position], elapsed]
         ]

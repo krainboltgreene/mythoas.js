@@ -7,7 +7,7 @@ export default ({request, response, environment}) => {
   const timespans = environment.stack.timespans
 
   environment.remote.keen.addEvent("requests", {
-    "payload": {
+    payload: {
       name,
       method,
       url,
@@ -16,10 +16,10 @@ export default ({request, response, environment}) => {
     }
   })
   environment.remote.keen.addEvent("timespans", {
-    "payload": timespans
+    payload: timespans
   })
   environment.remote.pusher.trigger("timespans", "new", {
-    "payload": timespans
+    payload: timespans
   })
 
   return {

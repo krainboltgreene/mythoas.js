@@ -170,7 +170,7 @@
     "prefer-spread": 2,
     "prefer-reflect": 2,
     "prefer-template": 2,
-    "quote-props": 2,
+    "quote-props": [2, "consistent-as-needed", {"keywords": true}],
     "quotes": 2,
     "radix": 2,
     "id-match": 2,

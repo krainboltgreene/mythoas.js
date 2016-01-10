@@ -17,7 +17,7 @@ requireEnvironmentVariables([
 ])
 
 const {
-  "env": {
+  env: {
     PORT
   }
 } = process

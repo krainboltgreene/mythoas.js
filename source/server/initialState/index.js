@@ -1,5 +1,5 @@
-import remote from "../remote"
-import dispatch from "../dispatch"
+import remote from "./remote"
+import dispatch from "./dispatch"
 
 const name = "mythoas"
 const acceptType = "application/mythoas.api+json; version=1"
@@ -11,35 +11,35 @@ const flow = {
 
 }
 const stack = {
-  "history": [],
-  "timespans": []
+  history: [],
+  timespans: []
 }
 
 export default (IncomingMessage, ServerResponse) => {
 
   return {
-    "request": {
-      "method": IncomingMessage.method,
-      "version": {
-        "major": IncomingMessage.httpVersionMajor,
-        "minor": IncomingMessage.httpVersionMinor
+    request: {
+      method: IncomingMessage.method,
+      version: {
+        major: IncomingMessage.httpVersionMajor,
+        minor: IncomingMessage.httpVersionMinor
       },
-      "url": IncomingMessage.url,
-      "headers": IncomingMessage.headers,
-      "body": IncomingMessage.body || ""
+      url: IncomingMessage.url,
+      headers: IncomingMessage.headers,
+      body: IncomingMessage.body || ""
     },
-    "response": {
-      "status": null,
-      "headers": {},
-      "body": null
+    response: {
+      status: null,
+      headers: {},
+      body: null
     },
-    "environment": {
+    environment: {
+      dispatch,
+      flow,
+      IncomingMessage,
       metadata,
       remote,
-      dispatch,
-      IncomingMessage,
       ServerResponse,
-      flow,
       stack
     }
   }

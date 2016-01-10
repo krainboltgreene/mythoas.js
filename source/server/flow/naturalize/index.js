@@ -7,10 +7,12 @@ export default ({request, response, environment}) => {
 
     case defaultAcceptType: {
 
+      const body = JSON.parse(request.body)
+
       return {
-        "request": {
+        request: {
           ...request,
-          "body": JSON.parse(request.body)
+          body
         },
         response,
         environment
