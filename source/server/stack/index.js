@@ -1,4 +1,3 @@
-import {pipeP} from "ramda"
 import check from "./check"
 import immunize from "./immunize"
 import scrub from "./scrub"
@@ -8,7 +7,7 @@ import track from "./track"
 
 export default (ƒunction) => {
 
-  return pipeP(
+  return [
     startTimer,
     scrub,
     immunize,
@@ -16,6 +15,6 @@ export default (ƒunction) => {
     check,
     stopTimer,
     track
-  )
+  ]
 
 }

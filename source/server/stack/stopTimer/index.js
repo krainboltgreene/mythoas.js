@@ -10,6 +10,8 @@ export default (state) => {
   const mapping = [
     "setResponseTimeStart",
     "accounts",
+    "accountsFetch",
+    "accountsNormalize",
     "naturalize",
     "notFound",
     "serialize",

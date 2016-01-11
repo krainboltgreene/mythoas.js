@@ -1,34 +1,42 @@
 export default ({request, response, environment}) => {
 
   const {
-    dispatch,
     remote: {
       sequelize: {
         users
       }
+    },
+    accounts,
+    accounts: {
+      metadata: {
+        defaultConditions
+      }
     }
   } = environment
-  const pattern = {
-    url: new RegExp(`/accounts/?`)
-  }
 
-  if (dispatch({request, pattern})) {
+  if (accounts) {
 
     const conditions = {
+      ...defaultConditions,
       limit: 10
     }
     const query = users.findAll(conditions)
 
     return query.then((collection) => {
 
-      const accounts = collection
-
       return {
         request,
         response,
         environment: {
           ...environment,
-          accounts
+          accounts: {
+            ...environment.accounts,
+            collection,
+            pagination: {
+              self: "http://example.com/accounts",
+              next: "http://example.com/accounts?page[offset]=1"
+            }
+          }
         }
       }
 
