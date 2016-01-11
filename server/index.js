@@ -1,7 +1,7 @@
+import requireEnvironmentVariables from "require-environment-variables"
 import http from "http"
 import connect from "connect"
-import requireEnvironmentVariables from "require-environment-variables"
-import server from "./server"
+import {reduce, map, flatten} from "ramda"
 
 requireEnvironmentVariables([
   "KEENIO_API_PUBLIC",
@@ -16,12 +16,25 @@ requireEnvironmentVariables([
   "PORT"
 ])
 
+import flows from "./flows"
+import stack from "./stack"
+import initialState from "./initialState"
+
 const {
   env: {
     PORT
   }
 } = process
 const Application = connect()
+const server = (request, response) => {
+
+  return reduce(
+    (state, ƒunction) => state.then(ƒunction),
+    Promise.resolve(initialState(request, response)),
+    flatten(map(stack, flows))
+  )
+
+}
 
 Application.use((request, response) => server(request, response))
 
