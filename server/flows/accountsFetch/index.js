@@ -3,7 +3,7 @@ export default ({request, response, environment}) => {
   const {
     remote: {
       sequelize: {
-        users
+        accounts: table
       }
     },
     accounts,
@@ -20,7 +20,7 @@ export default ({request, response, environment}) => {
       ...defaultConditions,
       limit: 10
     }
-    const query = users.findAll(conditions)
+    const query = table.findAll(conditions)
 
     return query.then((collection) => {
 

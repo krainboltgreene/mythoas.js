@@ -1,5 +1,5 @@
-import remote from "./remote"
-import dispatch from "./dispatch"
+import remote from "../../remote"
+import dispatch from "../dispatch"
 
 const name = "mythoas"
 const acceptType = "application/mythoas.api+json; version=1"
