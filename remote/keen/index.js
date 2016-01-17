@@ -4,6 +4,11 @@ import Dotenv from "dotenv"
 
 Dotenv.load()
 
+requireEnvironmentVariables([
+  "KEENIO_API_PUBLIC",
+  "KEENIO_API_PRIVATE"
+])
+
 const {
   env: {
     KEENIO_API_PUBLIC,

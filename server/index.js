@@ -2,7 +2,7 @@ import requireEnvironmentVariables from "require-environment-variables"
 import Dotenv from "dotenv"
 import http from "http"
 import connect from "connect"
-import {reduce, map, flatten} from "ramda"
+import {pipe, values, reduce, map, flatten} from "ramda"
 
 Dotenv.load()
 
@@ -25,7 +25,7 @@ const server = (request, response) => {
   return reduce(
     (state, ƒunction) => state.then(ƒunction),
     Promise.resolve(initialState(request, response)),
-    flatten(map(stack, flows))
+    pipe(values, map(stack), flatten)(flows)
   )
 
 }
