@@ -1,11 +1,13 @@
-import {toPairs, all} from "ramda"
+import {toPairs, all, pipe} from "ramda"
 
 export default ({request, pattern}) => {
 
-  return all(([key, value]) => {
+  const match = ([key, value]) => {
 
-    return request[key].match(value)
+    return request[key] === value || request[key].match(value)
 
-  })(toPairs(pattern))
+  }
+
+  return pipe(toPairs, all(match))(pattern)
 
 }
