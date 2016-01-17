@@ -1,6 +1,8 @@
 import accounts from "./accounts"
 import accountsFetch from "./accountsFetch"
+import accountsCreate from "./accountsCreate"
 import accountsNormalize from "./accountsNormalize"
+import accountsStandardize from "./accountsStandardize"
 import closeConnection from "./closeConnection"
 import logRequest from "./logRequest"
 import naturalize from "./naturalize"
@@ -22,6 +24,8 @@ export default {
   naturalize,
   accounts,
   accountsFetch,
+  accountsStandardize,
+  accountsCreate,
   accountsNormalize,
   notFound,
   serialize,
