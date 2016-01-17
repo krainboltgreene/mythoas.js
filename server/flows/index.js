@@ -11,7 +11,7 @@ import setContentLength from "./setContentLength"
 import setResponseTimeElapsed from "./setResponseTimeElapsed"
 import setResponseTimeStart from "./setResponseTimeStart"
 
-export default [
+export default {
   setResponseTimeStart,
   naturalize,
   accounts,
@@ -24,4 +24,4 @@ export default [
   setResponseTimeElapsed,
   logRequest,
   closeConnection
-]
+}

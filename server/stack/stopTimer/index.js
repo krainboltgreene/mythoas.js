@@ -1,3 +1,7 @@
+import {keys} from "ramda"
+
+import flows from "../../flows"
+
 export default (state) => {
 
   const NANOSECOND = 1e+9
@@ -7,19 +11,7 @@ export default (state) => {
     return (second * NANOSECOND + nanosecond) * MILLISECOND
 
   }
-  const mapping = [
-    "setResponseTimeStart",
-    "accounts",
-    "accountsFetch",
-    "accountsNormalize",
-    "naturalize",
-    "notFound",
-    "serialize",
-    "setContentLength",
-    "setAcceptType",
-    "setResponseTimeElapsed",
-    "logRequest"
-  ]
+  const mapping = keys(flows)
   const position = state.environment.stack.history.length
   const start = state.environment.stack.startTime
   const elapsed = calculate(...process.hrtime(start))
