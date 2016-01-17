@@ -1,4 +1,4 @@
-import remote from "../../../../../remote"
+import remote from "../../../../remote"
 
 const {
   sequelize: {
