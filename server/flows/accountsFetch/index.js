@@ -43,6 +43,10 @@ export default ({request, response, environment}) => {
         }
       }
 
+    }).catch((error) => {
+
+      return environment.remote.logger.log(error)
+
     })
 
   }
