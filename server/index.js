@@ -1,18 +1,12 @@
 import requireEnvironmentVariables from "require-environment-variables"
+import Dotenv from "dotenv"
 import http from "http"
 import connect from "connect"
 import {reduce, map, flatten} from "ramda"
 
+Dotenv.load()
+
 requireEnvironmentVariables([
-  "KEENIO_API_PUBLIC",
-  "KEENIO_API_PRIVATE",
-  "PUSHER_API_ID",
-  "PUSHER_API_PUBLIC",
-  "PUSHER_API_PRIVATE",
-  "SEQUALIZE_DATABASE_URI",
-  "SEQUALIZE_POOL_MAX",
-  "SEQUALIZE_POOL_MIN",
-  "SEQUALIZE_POOL_IDLE",
   "PORT"
 ])
 

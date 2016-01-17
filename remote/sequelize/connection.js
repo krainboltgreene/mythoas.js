@@ -1,4 +1,15 @@
 import Sequelize from "sequelize"
+import requireEnvironmentVariables from "require-environment-variables"
+import Dotenv from "dotenv"
+
+Dotenv.load()
+
+requireEnvironmentVariables([
+  "SEQUALIZE_DATABASE_URI",
+  "SEQUALIZE_POOL_MAX",
+  "SEQUALIZE_POOL_MIN",
+  "SEQUALIZE_POOL_IDLE"
+])
 
 const {
   env: {

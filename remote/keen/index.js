@@ -1,4 +1,8 @@
 import Keen from "keen-js"
+import requireEnvironmentVariables from "require-environment-variables"
+import Dotenv from "dotenv"
+
+Dotenv.load()
 
 const {
   env: {

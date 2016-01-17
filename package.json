@@ -107,6 +107,7 @@
     "babel-register": "6.3.13",
     "connect": "3.4.0",
     "deep-diff": "^0.3.3",
+    "dotenv": "^1.2.0",
     "flow-bin": "^0.20.1",
     "immu": "2.0.0",
     "keen-js": "^3.3.0",
