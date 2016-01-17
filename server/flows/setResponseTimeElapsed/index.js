@@ -22,7 +22,7 @@ export default ({request, response, environment}) => {
     environment: {
       ...environment,
       flow: {
-        "responseTimeElapsed": elapsed
+        responseTimeElapsed: elapsed
       }
     }
   }
