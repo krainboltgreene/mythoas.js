@@ -22,6 +22,14 @@ export default ({request, response, environment}) => {
     payload: timespans
   })
 
+  environment.remote.logger.log({
+    name,
+    method,
+    url,
+    elapsed,
+    timespans
+  })
+
   return {
     request,
     response,

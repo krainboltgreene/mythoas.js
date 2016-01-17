@@ -5,5 +5,6 @@ import sequelize from "./sequelize"
 export default {
   keen,
   pusher,
-  sequelize
+  sequelize,
+  logger: console
 }
