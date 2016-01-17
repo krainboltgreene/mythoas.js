@@ -7,6 +7,18 @@ const metadata = {
   name,
   acceptType
 }
+const request = {
+  method: null,
+  url: null,
+  version: {},
+  headers: {},
+  body: null
+}
+const response = {
+  status: null,
+  headers: {},
+  body: null
+}
 const flow = {
 
 }
@@ -18,21 +30,8 @@ const stack = {
 export default (IncomingMessage, ServerResponse) => {
 
   return {
-    request: {
-      method: IncomingMessage.method,
-      version: {
-        major: IncomingMessage.httpVersionMajor,
-        minor: IncomingMessage.httpVersionMinor
-      },
-      url: IncomingMessage.url,
-      headers: IncomingMessage.headers,
-      body: IncomingMessage.body || ""
-    },
-    response: {
-      status: null,
-      headers: {},
-      body: null
-    },
+    request,
+    response,
     environment: {
       dispatch,
       flow,
