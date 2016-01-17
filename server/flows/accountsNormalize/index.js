@@ -12,8 +12,8 @@ export default ({request, response, environment}) => {
     const data = collection.map((account) => {
 
       const type = "accounts"
-      const id = account.get("id")
-      const email = account.get("email")
+      const id = account.id
+      const email = account.email
       const self = `http://example.com/accounts/${id}`
 
       return {
