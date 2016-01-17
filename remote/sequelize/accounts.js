@@ -4,12 +4,12 @@ const table = "accounts"
 const email = {
   type: Sequelize.STRING
 }
-const username = {
+const name = {
   type: Sequelize.STRING
 }
 const attributes = {
   email,
-  username
+  name
 }
 const configuration = {}
 
