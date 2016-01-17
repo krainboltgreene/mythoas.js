@@ -13,8 +13,11 @@ export default ({request, response, environment}) => {
       }
     }
   } = environment
+  const {
+    method
+  } = request
 
-  if (accounts) {
+  if (accounts && method === "GET") {
 
     const conditions = {
       ...defaultConditions,
