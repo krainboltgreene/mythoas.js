@@ -46,6 +46,7 @@
     "eslint": "1.10.3",
     "eslint-plugin-babel": "3.0.0",
     "eslint-plugin-node": "0.2.0",
+    "mancy": "^2.2.0-2",
     "nodemon": "1.8.1"
   },
   "dependencies": {
