@@ -99,6 +99,7 @@
     "babel-plugin-transform-undefined-to-void": "6.3.13",
     "babel-plugin-typecheck": "3.6.1",
     "babel-register": "6.4.3",
+    "bluebird": "^3.1.1",
     "connect": "3.4.0",
     "deep-diff": "0.3.3",
     "dotenv": "1.2.0",
