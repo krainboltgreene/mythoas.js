@@ -1,31 +1,39 @@
 export default ({request, response, environment}) => {
 
-  const contentType = request.headers["Content-Type"]
-  const defaultAcceptType = environment.metadata.acceptType
+  const {
+    method
+  } = request
 
-  switch (contentType) {
+  if (method === "POST" || method === "PUT") {
 
-    case defaultAcceptType: {
+    const contentType = request.headers["content-type"]
+    const defaultAcceptType = environment.metadata.acceptType
 
-      const body = JSON.parse(request.body)
+    switch (contentType) {
 
-      return {
-        request: {
-          ...request,
-          body
-        },
-        response,
-        environment
+      case defaultAcceptType: {
+
+        const body = JSON.parse(request.body)
+
+        return {
+          request: {
+            ...request,
+            body
+          },
+          response,
+          environment
+        }
+
       }
 
-    }
+      default: {
 
-    default: {
+        return {
+          request,
+          response,
+          environment
+        }
 
-      return {
-        request,
-        response,
-        environment
       }
 
     }

@@ -3,7 +3,6 @@ import accountsFetch from "./accountsFetch"
 import accountsCreate from "./accountsCreate"
 import accountsNormalize from "./accountsNormalize"
 import accountsStandardize from "./accountsStandardize"
-import closeConnection from "./closeConnection"
 import logRequest from "./logRequest"
 import naturalize from "./naturalize"
 import notFound from "./notFound"
@@ -32,6 +31,5 @@ export default {
   setContentLength,
   setAcceptType,
   setResponseTimeElapsed,
-  logRequest,
-  closeConnection
+  logRequest
 }

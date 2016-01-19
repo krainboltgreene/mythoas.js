@@ -1,13 +1,21 @@
 export default (state) => {
 
-  const history = state.environment.stack.history
+  const {
+    environment,
+    environment: {
+      stack,
+      stack: {
+        history
+      }
+    }
+  } = state
 
   return {
     ...state,
     environment: {
-      ...state.environment,
+      ...environment,
       stack: {
-        ...state.environment.stack,
+        ...stack,
         history: [
           ...history,
           state

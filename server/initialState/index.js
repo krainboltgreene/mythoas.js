@@ -27,7 +27,7 @@ const stack = {
   timespans: []
 }
 
-export default (IncomingMessage, ServerResponse) => {
+export default (IncomingMessage) => {
 
   return {
     request,
@@ -38,7 +38,6 @@ export default (IncomingMessage, ServerResponse) => {
       IncomingMessage,
       metadata,
       remote,
-      ServerResponse,
       stack
     }
   }

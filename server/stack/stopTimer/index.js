@@ -4,6 +4,17 @@ import flows from "../../flows"
 
 export default (state) => {
 
+  const {
+    environment,
+    environment: {
+      stack,
+      stack: {
+        startTime,
+        timespans,
+        history
+      }
+    }
+  } = state
   const NANOSECOND = 1e+9
   const MILLISECOND = 1e-6
   const calculate = (second, nanosecond) => {
@@ -12,20 +23,20 @@ export default (state) => {
 
   }
   const mapping = keys(flows)
-  const position = state.environment.stack.history.length
-  const start = state.environment.stack.startTime
-  const elapsed = calculate(...process.hrtime(start))
+  const elapsed = calculate(...process.hrtime(startTime))
 
   return {
-    request: state.request,
-    response: state.response,
+    ...state,
     environment: {
-      ...state.environment,
+      ...environment,
       stack: {
-        ...state.environment.stack,
+        ...stack,
         timespans: [
-          ...state.environment.stack.timespans,
-          [mapping[position], elapsed]
+          ...timespans,
+          [
+            mapping[history.length],
+            elapsed
+          ]
         ]
       }
     }

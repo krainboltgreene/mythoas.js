@@ -43,9 +43,9 @@ export default ({request, response, environment}) => {
         }
       }
 
-    }).catch((error) => {
+    }).catch((reason) => {
 
-      return environment.remote.logger.log(error)
+      return Promise.reject(reason)
 
     })
 

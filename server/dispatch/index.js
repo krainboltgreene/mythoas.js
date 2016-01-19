@@ -1,10 +1,12 @@
-import {toPairs, all, pipe} from "ramda"
+import {toPairs, all, pipe, prop} from "ramda"
 
 export default ({request, pattern}) => {
 
   const match = ([key, value]) => {
 
-    return request[key] === value || request[key].match(value)
+    const property = prop(key)(request)
+
+    return property === value || property.match(value)
 
   }
 

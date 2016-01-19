@@ -1,27 +1,29 @@
-export default ({request, response, environment}) => {
+export default (state) => {
 
-  if (!request) {
+  if (!state) {
 
-    throw new Error(`Request is missing`)
-
-  }
-
-  if (!response) {
-
-    throw new Error(`Response is missing`)
+    throw new Error(`A flow didn't return state`)
 
   }
 
-  if (!environment) {
+  if (!state.request) {
 
-    throw new Error(`Environment is missing`)
+    throw new Error(`A flow didn't return the request state`)
 
   }
 
-  return {
-    request,
-    response,
-    environment
+  if (!state.response) {
+
+    throw new Error(`A flow didn't return the response state`)
+
   }
+
+  if (!state.environment) {
+
+    throw new Error(`A flow didn't return the environment state`)
+
+  }
+
+  return state
 
 }

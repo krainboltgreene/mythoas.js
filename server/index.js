@@ -2,7 +2,12 @@ import requireEnvironmentVariables from "require-environment-variables"
 import Dotenv from "dotenv"
 import http from "http"
 import connect from "connect"
-import {pipe, values, reduce, map, flatten} from "ramda"
+import Promise from "bluebird"
+
+Promise.config({
+  longStackTraces: true,
+  warnings: true
+})
 
 Dotenv.load()
 
@@ -10,9 +15,7 @@ requireEnvironmentVariables([
   "PORT"
 ])
 
-import flows from "./flows"
-import stack from "./stack"
-import initialState from "./initialState"
+import channel from "./channel"
 
 const {
   env: {
@@ -20,16 +23,7 @@ const {
   }
 } = process
 const Application = connect()
-const server = (request, response) => {
 
-  return reduce(
-    (state, ƒunction) => state.then(ƒunction),
-    Promise.resolve(initialState(request, response)),
-    pipe(values, map(stack), flatten)(flows)
-  )
-
-}
-
-Application.use((request, response) => server(request, response))
+Application.use((request, response) => channel(request, response))
 
 http.createServer(Application).listen(PORT)

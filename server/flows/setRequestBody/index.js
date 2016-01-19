@@ -1,7 +1,5 @@
 import getRawBody from "raw-body"
 
-import closeConnection from "../closeConnection"
-
 export default ({request, response, environment}) => {
 
   const {
@@ -21,20 +19,9 @@ export default ({request, response, environment}) => {
       environment
     }
 
-  }).catch((error) => {
+  }).catch((reason) => {
 
-    return closeConnection({
-      request,
-      response: {
-        ...response,
-        status: 500,
-        body: ""
-      },
-      environment: {
-        ...environment,
-        error
-      }
-    })
+    return Promise.reject(reason)
 
   })
 

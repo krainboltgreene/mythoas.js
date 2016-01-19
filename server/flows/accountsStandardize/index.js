@@ -1,5 +1,15 @@
 export default ({request, response, environment}) => {
 
+  if (!environment.accounts || request.method === "GET") {
+
+    return {
+      request,
+      response,
+      environment
+    }
+
+  }
+
   const {
     body: {
       data: {
@@ -8,38 +18,39 @@ export default ({request, response, environment}) => {
     }
   } = request
 
-  if (environment.accounts && type) {
-
-    const {
-      body: {
-        data: {
-          attributes: {
-            name,
-            email
-          }
-        }
-      }
-    } = request
-
-    const account = {
-      name,
-      email
-    }
+  if (type !== "accounts") {
 
     return {
       request,
       response,
-      environment: {
-        account
-      }
+      environment
     }
 
+  }
+
+  const {
+    body: {
+      data: {
+        attributes: {
+          name,
+          email
+        }
+      }
+    }
+  } = request
+
+  const account = {
+    name,
+    email
   }
 
   return {
     request,
     response,
-    environment
+    environment: {
+      ...environment,
+      account
+    }
   }
 
 }
