@@ -14,7 +14,7 @@
     "build:remote": "babel ./remote/ -d ./tmp/remote/",
     "build:server": "babel ./server/ -d ./tmp/server/",
     "build:task": "babel ./task/ -d ./tmp/task/",
-    "server:development": "nodemon ./server/ --exec babel-node --plugins syntax-flow transform-async-to-generator,transform-async-to-module-method,transform-class-constructor-call,transform-class-properties,transform-decorators,transform-do-expressions,transform-es2015-arrow-functions,transform-es2015-block-scoped-functions,transform-es2015-block-scoping,transform-es2015-classes,transform-es2015-computed-properties,transform-es2015-destructuring,transform-es2015-for-of,transform-es2015-function-name,transform-es2015-literals,transform-es2015-modules-commonjs,transform-es2015-object-super,transform-es2015-parameters,transform-es2015-shorthand-properties,transform-es2015-spread,transform-es2015-sticky-regex,transform-es2015-template-literals,transform-es2015-typeof-symbol,transform-es2015-unicode-regex,transform-es3-member-expression-literals,transform-es3-property-literals,transform-es5-property-mutators,transform-eval,transform-exponentiation-operator,transform-export-extensions,transform-function-bind,transform-inline-environment-variables,transform-jscript,transform-member-expression-literals,transform-merge-sibling-variables,transform-minify-booleans,transform-object-assign,transform-object-rest-spread,transform-object-set-prototype-of-to-assign,transform-property-literals,transform-proto-to-assign,transform-regenerator,transform-runtime,transform-simplify-comparison-operators,transform-undefined-to-void transform-flow-strip-types typecheck",
+    "server:development": "nodemon ./server/ --exec babel-node --plugins syntax-flow transform-async-to-generator,transform-async-to-module-method,transform-class-constructor-call,transform-class-properties,transform-decorators,transform-do-expressions,transform-es2015-block-scoped-functions,transform-es2015-block-scoping,transform-es2015-classes,transform-es2015-computed-properties,transform-es2015-destructuring,transform-es2015-for-of,transform-es2015-function-name,transform-es2015-literals,transform-es2015-modules-commonjs,transform-es2015-object-super,transform-es2015-parameters,transform-es2015-shorthand-properties,transform-es2015-spread,transform-es2015-sticky-regex,transform-es2015-template-literals,transform-es2015-typeof-symbol,transform-es2015-unicode-regex,transform-es3-member-expression-literals,transform-es3-property-literals,transform-es5-property-mutators,transform-eval,transform-exponentiation-operator,transform-export-extensions,transform-function-bind,transform-member-expression-literals,transform-merge-sibling-variables,transform-minify-booleans,transform-object-assign,transform-object-rest-spread,transform-object-set-prototype-of-to-assign,transform-property-literals,transform-proto-to-assign,transform-regenerator,transform-runtime,transform-simplify-comparison-operators,transform-undefined-to-void transform-flow-strip-types typecheck",
     "server:production": "node ./tmp/server/index.js",
     "task:database:sync": "npm-run-all build:remote build:task task:database:sync:accounts",
     "task:database:sync:accounts": "node ./tmp/task/database/sync/accounts/index.js"
@@ -59,7 +59,6 @@
     "babel-plugin-transform-class-properties": "6.3.13",
     "babel-plugin-transform-decorators": "6.3.13",
     "babel-plugin-transform-do-expressions": "6.3.13",
-    "babel-plugin-transform-es2015-arrow-functions": "6.3.13",
     "babel-plugin-transform-es2015-block-scoped-functions": "6.3.13",
     "babel-plugin-transform-es2015-block-scoping": "6.3.13",
     "babel-plugin-transform-es2015-classes": "6.3.15",
@@ -85,8 +84,6 @@
     "babel-plugin-transform-export-extensions": "6.3.13",
     "babel-plugin-transform-flow-strip-types": "^6.4.0",
     "babel-plugin-transform-function-bind": "6.3.13",
-    "babel-plugin-transform-inline-environment-variables": "6.3.13",
-    "babel-plugin-transform-jscript": "6.3.13",
     "babel-plugin-transform-member-expression-literals": "6.3.13",
     "babel-plugin-transform-merge-sibling-variables": "6.3.13",
     "babel-plugin-transform-minify-booleans": "6.3.13",
@@ -113,7 +110,6 @@
     "ramda": "0.18.0",
     "raw-body": "^2.1.5",
     "require-environment-variables": "^1.1.1",
-    "sequelize": "^3.15.1",
-    "unpromise": "0.0.1"
+    "sequelize": "3.17.3"
   }
 }
