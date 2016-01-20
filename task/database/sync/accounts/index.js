@@ -6,8 +6,12 @@ const {
   }
 } = remote
 
+const configuration = {
+  force: true
+}
+
 const {
   exit
 } = process
 
-accounts.sync().then(exit)
+accounts.sync(configuration).then(exit)

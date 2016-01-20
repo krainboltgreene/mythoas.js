@@ -3,7 +3,9 @@ import Sequelize from "sequelize"
 const table = "accounts"
 const id = {
   type: Sequelize.UUID,
-  primaryKey: true
+  primaryKey: true,
+  allowNull: false,
+  defaultValue: Sequelize.UUIDV4
 }
 const email = {
   type: Sequelize.STRING,
