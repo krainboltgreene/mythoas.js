@@ -1,43 +1,51 @@
 export default ({request, response, environment}) => {
 
   const {
-    remote: {
-      sequelize: {
-        accounts: table
-      }
-    },
-    accounts,
-    accounts: {
+    payload: {
       metadata: {
-        defaultConditions
-      }
+        shape
+      },
+      accounts
     }
   } = environment
-  const {
-    method
-  } = request
 
-  if (accounts && method === "GET") {
+  if (accounts && shape === "list") {
+
+    const {
+      remote: {
+        sequelize: {
+          accounts: table
+        }
+      }
+    } = environment
 
     const conditions = {
-      ...defaultConditions,
       limit: 10
     }
-    const query = table.findAll(conditions)
 
-    return query.then((collection) => {
+    return table.findAll(conditions).then((collection) => {
+
+      const {
+        resources
+      } = environment
+      const status = 200
 
       return {
         request,
-        response,
+        response: {
+          ...response,
+          status
+        },
         environment: {
           ...environment,
-          accounts: {
-            ...environment.accounts,
-            collection,
-            pagination: {
-              self: "http://example.com/accounts",
-              next: "http://example.com/accounts?page[offset]=1"
+          resources: {
+            ...resources,
+            accounts: {
+              collection,
+              pagination: {
+                self: "http://example.com/accounts",
+                next: "http://example.com/accounts?page[offset]=1"
+              }
             }
           }
         }
@@ -51,10 +59,7 @@ export default ({request, response, environment}) => {
 
   }
 
-  return {
-    request,
-    response,
-    environment
-  }
+
+  return {request, response, environment}
 
 }

@@ -1,7 +1,14 @@
 export default ({request, response, environment}) => {
 
   const {
-    dispatch
+    method
+  } = request
+  const {
+    dispatch,
+    payload,
+    payload: {
+      metadata
+    }
   } = environment
   const pattern = {
     url: new RegExp(`/accounts/?`)
@@ -9,33 +16,38 @@ export default ({request, response, environment}) => {
 
   if (dispatch({request, pattern})) {
 
-    const accounts = {
-      metadata: {
-        defaultCondition: {
-          limit: 10
-        }
+    const shape = {
+      GET () {
+
+        return "list"
+
+      },
+      POST () {
+
+        return "create"
+
       }
     }
-    const status = 200
 
     return {
       request,
-      response: {
-        ...response,
-        status
-      },
+      response,
       environment: {
         ...environment,
-        accounts
+        payload: {
+          ...payload,
+          accounts: {},
+          metadata: {
+            ...metadata,
+            shape: shape[method]()
+          }
+        }
+
       }
     }
 
   }
 
-  return {
-    request,
-    response,
-    environment
-  }
+  return {request, response, environment}
 
 }

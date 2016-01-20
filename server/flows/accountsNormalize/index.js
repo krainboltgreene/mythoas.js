@@ -1,15 +1,22 @@
+import {map} from "ramda"
+
 export default ({request, response, environment}) => {
 
   const {
-    accounts: {
-      collection,
+    resources: {
+      accounts,
       pagination
     }
   } = environment
 
-  if (collection) {
+  if (accounts) {
 
-    const data = collection.map((account) => {
+    const {
+      collection,
+      member
+    } = accounts
+
+    const asJSONAPI = (account) => {
 
       const type = "accounts"
       const id = account.id
@@ -27,7 +34,24 @@ export default ({request, response, environment}) => {
         }
       }
 
-    })
+    }
+    const memberOrCollection = () => {
+
+      if (collection) {
+
+        return map(asJSONAPI)(collection)
+
+      }
+
+      if (member) {
+
+        return asJSONAPI(member)
+
+      }
+
+    }
+
+    const data = memberOrCollection()
     const body = {
       data,
       links: {
@@ -46,10 +70,6 @@ export default ({request, response, environment}) => {
 
   }
 
-  return {
-    request,
-    response,
-    environment
-  }
+  return {request, response, environment}
 
 }

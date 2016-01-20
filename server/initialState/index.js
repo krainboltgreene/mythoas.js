@@ -19,6 +19,12 @@ const response = {
   headers: {},
   body: null
 }
+const payload = {
+
+}
+const resources = {
+
+}
 const flow = {
 
 }
@@ -38,6 +44,8 @@ export default (IncomingMessage) => {
       IncomingMessage,
       metadata,
       remote,
+      payload,
+      resources,
       stack
     }
   }

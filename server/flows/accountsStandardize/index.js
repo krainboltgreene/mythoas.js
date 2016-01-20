@@ -1,56 +1,71 @@
 export default ({request, response, environment}) => {
 
-  if (!environment.accounts || request.method === "GET") {
-
-    return {
-      request,
-      response,
-      environment
-    }
-
-  }
-
   const {
-    body: {
-      data: {
-        type
+    payload,
+    payload: {
+      accounts,
+      metadata: {
+        shape
       }
     }
-  } = request
+  } = environment
 
-  if (type !== "accounts") {
+  if (accounts) {
 
-    return {
-      request,
-      response,
-      environment
-    }
+    switch (shape) {
 
-  }
+      case "index": {
 
-  const {
-    body: {
-      data: {
-        attributes: {
+        return {
+          request,
+          response,
+          environment
+        }
+
+      }
+
+      case "create": {
+
+        const {
+          body: {
+            data: {
+              attributes: {
+                name,
+                email
+              }
+            }
+          }
+        } = request
+        const attributes = {
           name,
           email
         }
+
+        return {
+          request,
+          response,
+          environment: {
+            ...environment,
+            payload: {
+              ...payload,
+              accounts: {
+                ...accounts,
+                attributes
+              }
+            }
+          }
+        }
+
       }
-    }
-  } = request
 
-  const account = {
-    name,
-    email
-  }
+      default: {
 
-  return {
-    request,
-    response,
-    environment: {
-      ...environment,
-      account
+        return {request, response, environment}
+
+      }
+
     }
+
   }
 
 }
