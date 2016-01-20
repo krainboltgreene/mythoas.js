@@ -6,4 +6,8 @@ const {
   }
 } = remote
 
-accounts.sync()
+const {
+  exit
+} = process
+
+accounts.sync().then(exit)
