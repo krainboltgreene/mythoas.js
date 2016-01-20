@@ -1,4 +1,5 @@
 {
+  "sourceMaps": "both",
   "plugins": [
     "syntax-flow",
     "transform-async-to-generator",
