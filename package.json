@@ -4,8 +4,8 @@
   "description": "A reducer-based HTTP STDAPI.org HATEOAS framework",
   "main": "index.js",
   "scripts": {
-    "start": "source .env && npm-run-all --parallel lint server:development",
     "serve": "npm-run-all build:remote build:server server:production",
+    "start": "npm-run-all --parallel lint server:development",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "npm-run-all --parallel lint:js",
     "lint:js": "npm-run-all --parallel lint:js:server lint:js:task",
