@@ -1,39 +1,59 @@
 export default ({request, response, environment}) => {
 
-  const name = environment.metadata.name
-  const method = request.method
-  const url = request.url
-  const elapsed = environment.flow.responseTimeElapsed
-  const timespans = environment.stack.timespans
+  const {
+    metadata: {
+      name
+    },
+    flow: {
+      responseTimeElapsed
+    },
+    stack: {
+      timespans
+    },
+    remote: {
+      keen,
+      pusher,
+      logger
+    }
+  } = environment
+  const {
+    method,
+    url
+  } = request
 
-  environment.remote.keen.addEvent("requests", {
+  keen.addEvent("requests", {
     payload: {
       name,
       method,
       url,
-      elapsed,
+      responseTimeElapsed,
       timespans
     }
   })
-  environment.remote.keen.addEvent("timespans", {
+  keen.addEvent("timespans", {
     payload: timespans
   })
-  environment.remote.pusher.trigger("timespans", "new", {
+  keen.addEvent("response-times", {
+    payload: responseTimeElapsed
+  })
+  keen.addEvent("methods", {
+    payload: method
+  })
+  keen.addEvent("urls", {
+    payload: url
+  })
+  pusher.trigger("timespans", "new", {
     payload: timespans
   })
 
-  environment.remote.logger.log({
+  logger.log({
     name,
     method,
     url,
-    elapsed,
+    responseTimeElapsed,
     timespans
   })
 
-  return {
-    request,
-    response,
-    environment
-  }
+  return {request, response, environment}
 
 }
