@@ -5,13 +5,10 @@ const {
     accounts
   }
 } = remote
-
-const configuration = {
-  force: true
-}
-
 const {
   exit
 } = process
 
-accounts.sync(configuration).then(exit)
+accounts.sync({
+  force: true
+}).then(exit)
