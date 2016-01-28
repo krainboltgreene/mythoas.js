@@ -39,8 +39,8 @@
   },
   "homepage": "https://github.com/libmythoas/mythoas.js#readme",
   "engines": {
-    "node": "5.2.0",
-    "npm": "3.3.12"
+    "node": "5.5.0",
+    "npm": "3.5.3"
   },
   "devDependencies": {
     "babel-eslint": "5.0.0-beta6",
