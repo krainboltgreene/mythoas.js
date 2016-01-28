@@ -1,6 +1,6 @@
 import Sequelize from "sequelize"
 
-const table = "metaRequests"
+const table = "metaTimes"
 const id = {
   type: Sequelize.UUID,
   primaryKey: true,
@@ -8,34 +8,18 @@ const id = {
   defaultValue: Sequelize.UUIDV4,
   unique: true
 }
-const name = {
-  type: Sequelize.TEXT,
-  allowNull: false,
-  defaultValue: ""
-}
-const method = {
-  type: Sequelize.TEXT,
-  allowNull: false
-}
-const headers = {
+const times = {
   type: Sequelize.JSONB,
   allowNull: false,
   defaultValue: {}
 }
-const body = {
-  type: Sequelize.TEXT,
-  allowNull: false,
-  defaultValue: ""
-}
 const attributes = {
   id,
-  name,
-  method,
-  headers,
-  body
+  times
 }
 const configuration = {
-  timestamps: true
+  timestamps: true,
+  updatedAt: false
 }
 
 export default {

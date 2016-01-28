@@ -6,7 +6,11 @@ const {
   }
 } = remote
 const {
-  exit
+  exit,
+  env: {
+    NODE_ENV
+  }
 } = process
+const force = NODE_ENV === "development"
 
-export default metaResponses.sync().then(exit)
+export default metaResponses.sync({force}).then(exit).catch(exit)

@@ -6,7 +6,11 @@ const {
   }
 } = remote
 const {
-  exit
+  exit,
+  env: {
+    NODE_ENV
+  }
 } = process
+const force = NODE_ENV === "development"
 
-export default accounts.sync().then(exit)
+export default accounts.sync({force}).then(exit).catch(exit)

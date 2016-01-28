@@ -1,3 +1,4 @@
+
 import Sequelize from "sequelize"
 
 const table = "metaResponses"
@@ -7,6 +8,11 @@ const id = {
   allowNull: false,
   defaultValue: Sequelize.UUIDV4,
   unique: true
+}
+const name = {
+  type: Sequelize.TEXT,
+  allowNull: false,
+  defaultValue: ""
 }
 const status = {
   type: Sequelize.INTEGER,
@@ -24,6 +30,7 @@ const body = {
 }
 const attributes = {
   id,
+  name,
   status,
   headers,
   body

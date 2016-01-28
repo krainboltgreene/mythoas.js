@@ -2,7 +2,7 @@ import remote from "../../../../remote"
 
 const {
   sequelize: {
-    metaRequests
+    metaTimes
   }
 } = remote
 const {
@@ -13,4 +13,4 @@ const {
 } = process
 const force = NODE_ENV === "development"
 
-export default metaRequests.sync({force}).then(exit).catch(exit)
+export default metaTimes.sync({force}).then(exit).catch(exit)
