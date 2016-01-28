@@ -1,4 +1,4 @@
-import {each} from "ramda"
+import {forEach} from "ramda"
 
 export default ({request, response, environment}) => {
 
@@ -33,7 +33,7 @@ export default ({request, response, environment}) => {
     times
   })
 
-  each(([key, value]) => {
+  forEach(([key, value]) => {
 
     keen.addEvent(`flow-times-${key}`, {
       value
