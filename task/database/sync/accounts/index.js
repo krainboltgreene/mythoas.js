@@ -9,6 +9,4 @@ const {
   exit
 } = process
 
-accounts.sync({
-  force: true
-}).then(exit)
+export default accounts.sync().then(exit)
