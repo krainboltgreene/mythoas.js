@@ -1,4 +1,4 @@
-import {forEach, fromPairs} from "ramda"
+import {forEach} from "ramda"
 
 const logKeen = ({request, response, environment}) => {
 
@@ -45,7 +45,7 @@ const logSequelize = ({request, response, environment}) => {
 
   sequelize.metaRequests.create({name, ...request})
   sequelize.metaResponses.create({name, ...response})
-  sequelize.metaTimes.create({times: fromPairs(times)})
+  sequelize.metaTimes.create({times})
 
 }
 
