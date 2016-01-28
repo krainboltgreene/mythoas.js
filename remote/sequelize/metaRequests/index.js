@@ -9,7 +9,7 @@ const id = {
   unique: true
 }
 const method = {
-  type: Sequelize.text,
+  type: Sequelize.TEXT,
   allowNull: false
 }
 const headers = {
