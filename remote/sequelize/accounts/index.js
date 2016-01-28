@@ -5,7 +5,8 @@ const id = {
   type: Sequelize.UUID,
   primaryKey: true,
   allowNull: false,
-  defaultValue: Sequelize.UUIDV4
+  defaultValue: Sequelize.UUIDV4,
+  unique: true
 }
 const email = {
   type: Sequelize.STRING,
