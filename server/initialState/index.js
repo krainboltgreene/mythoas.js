@@ -30,7 +30,7 @@ const flow = {
 }
 const stack = {
   history: [],
-  timespans: []
+  times: []
 }
 
 export default (IncomingMessage) => {

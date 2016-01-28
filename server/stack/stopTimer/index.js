@@ -10,7 +10,7 @@ export default (state) => {
       stack,
       stack: {
         startTime,
-        timespans,
+        times,
         history
       }
     }
@@ -31,8 +31,8 @@ export default (state) => {
       ...environment,
       stack: {
         ...stack,
-        timespans: [
-          ...timespans,
+        times: [
+          ...times,
           [
             mapping[history.length],
             elapsed
