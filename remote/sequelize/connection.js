@@ -21,6 +21,9 @@ const {
 } = process
 
 export default new Sequelize(SEQUALIZE_DATABASE_URI, {
+  dialectOptions: {
+    ssl: true
+  },
   pool: {
     max: SEQUALIZE_POOL_MAX,
     min: SEQUALIZE_POOL_MIN,
