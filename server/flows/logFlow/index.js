@@ -42,8 +42,12 @@ const logSequelize = ({request, response, environment}) => {
       sequelize
     }
   } = environment
+  const body = JSON.stringify(request.body)
 
-  sequelize.metaRequests.create({name, ...request})
+  sequelize.metaRequests.create({name,
+    ...request,
+    body
+  })
   sequelize.metaResponses.create({name, ...response})
   sequelize.metaTimes.create({times})
 
