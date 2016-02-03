@@ -90,11 +90,11 @@ export default ({request, response, environment}) => {
     }
   } = environment
 
-  logKeen({request, response, environment})
-  logSequelize({request, response, environment})
-  logPusher({request, response, environment})
-
-  logger.log({name, request, response, responseTimeElapsed, times})
+  // logKeen({request, response, environment})
+  // logSequelize({request, response, environment})
+  // logPusher({request, response, environment})
+  //
+  // logger.log({name, request, response, responseTimeElapsed, times})
 
   return {request, response, environment}
 
