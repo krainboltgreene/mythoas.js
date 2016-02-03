@@ -2,10 +2,12 @@ import remote from "../../remote"
 import dispatch from "../dispatch"
 
 const name = "mythoas"
-const acceptType = "application/mythoas.api+json; version=1"
+const defaultAccept = "application/json"
+const defaultContentType = "application/json"
 const metadata = {
   name,
-  acceptType
+  defaultAccept,
+  defaultContentType
 }
 const request = {
   method: null,

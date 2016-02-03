@@ -3,11 +3,13 @@ import accountsFetch from "./accountsFetch"
 import accountsCreate from "./accountsCreate"
 import accountsNormalize from "./accountsNormalize"
 import accountsStandardize from "./accountsStandardize"
+import empty from "./empty"
+import numbers from "./numbers"
 import logFlow from "./logFlow"
 import naturalize from "./naturalize"
 import notFound from "./notFound"
 import serialize from "./serialize"
-import setAcceptType from "./setAcceptType"
+import setAccept from "./setAccept"
 import setContentLength from "./setContentLength"
 import setResponseTimeElapsed from "./setResponseTimeElapsed"
 import setResponseTimeStart from "./setResponseTimeStart"
@@ -26,10 +28,12 @@ export default {
   accountsFetch,
   accountsCreate,
   accountsNormalize,
+  empty,
+  numbers,
   notFound,
   serialize,
   setContentLength,
-  setAcceptType,
+  setAccept,
   setResponseTimeElapsed,
   logFlow
 }

@@ -8,7 +8,7 @@ export default ({request, response, environment}) => {
       ...response,
       headers: {
         ...response.headers,
-        "Accept-Type": acceptType
+        "Accept": acceptType
       }
     },
     environment

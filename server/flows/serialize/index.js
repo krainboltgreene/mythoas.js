@@ -1,13 +1,21 @@
 export default ({request, response, environment}) => {
 
-  const acceptType = request.headers["Accept-Type"]
-  const defaultAcceptType = defaultAcceptType
+  const {
+    body
+  } = response
+  const {
+    headers: {
+      accept
+    }
+  } = request
+  const {
+    metadata: {
+      defaultAccept
+    }
+  } = environment
 
-  switch (acceptType) {
-
-    case defaultAcceptType: {
-
-      const body = JSON.stringify(response.body)
+  switch (accept) {
+    case defaultAccept: {
 
       return {
         request,
@@ -15,9 +23,9 @@ export default ({request, response, environment}) => {
           ...response,
           headers: {
             ...response.headers,
-            "Content-Type": defaultAcceptType
+            "Content-Type": defaultAccept
           },
-          body
+          body: JSON.stringify(response.body)
         },
         environment
       }
@@ -26,17 +34,15 @@ export default ({request, response, environment}) => {
 
     default: {
 
-      const body = JSON.stringify(response.body)
-
       return {
         request,
         response: {
           ...response,
           headers: {
             ...response.headers,
-            "Content-Type": defaultAcceptType
+            "Content-Type": defaultAccept
           },
-          body
+          body: body ? JSON.stringify(body) : ""
         },
         environment
       }
@@ -44,7 +50,6 @@ export default ({request, response, environment}) => {
     }
 
   }
-
 
   return {request, response, environment}
 
