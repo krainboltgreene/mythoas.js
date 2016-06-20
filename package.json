@@ -2,7 +2,7 @@
   "name": "api",
   "version": "1.0.0",
   "description": "A simple HTTP API",
-  "main": "tmp/server/index.js",
+  "main": "tmp/source/index.js",
   "scripts": {
     "postinstall": "npm run build",
     "start": "npm-run-all --parallel watch:lint watch:test",
@@ -13,9 +13,9 @@
     "watch:build": "chokidar './source/' --initial --command 'npm run build --silent'",
     "watch:lint": "chokidar './source/' --initial --command 'npm run lint --silent'",
     "watch:test": "chokidar  './source/' --initial --command 'npm run test --silent'",
-    "server": "npm run server:`echo $NODE_ENV`",
-    "server:development": "chokidar './server/' './remote/' --initial --command 'kill `cat ./tmp/process.pid`; babel-node ./server/index.js'",
-    "server:production": "node './tmp/server/index.js'",
+    "source": "npm run source:`echo $NODE_ENV`",
+    "source:development": "chokidar './source/' './remote/' --initial --command 'kill `cat ./tmp/process.pid`; babel-node ./source/index.js'",
+    "source:production": "node './tmp/source/index.js'",
     "data:migrate": "knex migrate:latest",
     "data:change": "knex migrate:make",
     "data:seed": "knex seed:run"
