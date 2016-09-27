@@ -65,7 +65,6 @@
     "greenkeeper": "^3",
     "mocha": "^2",
     "immu": "^2",
-    "npm-check-updates": "^2"
   },
   "dependencies": {
     "abstraction": "^4",
